@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+    <head>
+        {% block title %}
+        {% endblock %}
+
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
+
+        <link rel="stylesheet" type="text/css" href="css/nav/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="css/nav/jquery.mCustomScrollbar.css">
+        <link rel="stylesheet" type="text/css" href="css/nav/style.css">
+        <link rel="stylesheet" type="text/css" href="css/nav/icon/themify-icons/themify-icons.css">
+        {% block style %}
+        {% endblock %}
+    </head>
+
+    <body>
+        <div id="pcoded" class="pcoded">
+            <div class="pcoded-container navbar-wrapper">
+                <nav class="navbar header-navbar pcoded-header">
+                    <div class="navbar-wrapper">
+
+                        <div class="navbar-logo">
+
+                            <div class="sidebar_toggle" style="margin-bottom: -15px;">
+                                <a href="javascript:void(0)">
+                                    <i class="ti-menu"></i>
+                                </a>
+                            </div>
+                            <a href="index.html"  style="margin-left:560px; margin-top: 5px;">
+                                <img src="img/logo.png" width="380px" height="58px">
+                            </a>
+                        </div>
+
+                        <div class="navbar-container container-fluid">
+                            <ul class="nav-right">
+                                <li class="user-profile header-notification">
+
+                                    <a href="#!" class="waves-effect waves-light">
+                                        <img
+                                            src="img/avatar-4.jpg"
+                                            class="img-radius"
+                                            alt="User-Profile-Image">
+                                        <span>John Doe</span>
+                                        <i class="ti-angle-down"></i>
+                                    </a>
+
+                                    <ul class="show-notification profile-notification">
+                                        <li class="waves-effect waves-light">
+                                            <a href="user-profile.html">
+                                                <i class="ti-user"></i>
+                                                나의 정보
+                                            </a>
+                                        </li>
+                                        <li class="waves-effect waves-light">
+                                            <a href="href=/profile">
+                                                <i class="ti-email"></i>
+                                                나의 챌린저스
+                                            </a>
+                                        </li>
+                                        <li class="waves-effect waves-light">
+                                            <a href="/auth/logout">
+                                                <i class="ti-layout-sidebar-left"></i>
+                                                로그아웃
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </nav>
+            </div>
+
+            <nav class="pcoded-navbar">
+                <div class="pcoded-inner-navbar main-menu">
+                    <ul class="pcoded-item pcoded-left-item">
+                        　
+                        <li class="">
+                            <a href="index.html" class="waves-effect waves-dark">
+                                <span class="pcoded-micon">
+                                    <i class="ti-home"></i>
+                                    <b>D</b>
+                                </span>
+                                <span class="pcoded-mtext" data-i18n="nav.dash.main">홈</span>
+                            </a>
+                        </li>
+                        　
+                        <li class="">
+                            <a href="index.html" class="waves-effect waves-dark">
+                                <span class="pcoded-micon">
+                                    <i class="ti-home"></i>
+                                    <b>D</b>
+                                </span>
+                                <span class="pcoded-mtext" data-i18n="nav.dash.main">챌린저스 목록</span>
+                            </a>
+                        </li>
+                                                    　
+                        <li class="">
+                            <a href="index.html" class="waves-effect waves-dark">
+                                <span class="pcoded-micon">
+                                    <i class="ti-home"></i>
+                                    <b>D</b>
+                                </span>
+                                <span class="pcoded-mtext" data-i18n="nav.dash.main">챌린저스 개설</span>
+                            </a>
+                        </li>
+                        　
+                    </ul>
+                </div>
+            </nav>
+            <div class="pcoded-main-container">
+                {% block content %}
+                {% endblock %}
+            </div>
+        </div>
+        {% block script %}
+        {% endblock %}
+        <script type="text/javascript" src="js/nav/jquery.min.js"></script>
+        <script type="text/javascript" src="js/nav/script.js"></script>
+        <script src="js/nav/pcoded.min.js"></script>
+        <script src="js/nav/vertical-layout.min.js "></script>
+    </body>
+</html>
