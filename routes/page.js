@@ -13,12 +13,16 @@ router.get('/profile', isLoggedIn, (req, res) => {
   res.render('profile');
 });
 
-router.get('/join', isNotLoggedIn, (req, res) => {
-  res.render('join');
+router.get('/list', isLoggedIn, (req, res) => {
+  res.render('challengeList');
 });
 
-router.get('/home', isLoggedIn, (req, res) => {
-  res.render('home');
+router.get('/form', isLoggedIn, (req, res) => {
+  res.render('challengeForm');
+});
+
+router.get('/join', isNotLoggedIn, (req, res) => {
+  res.render('join');
 });
 
 router.get('/', async (req, res, next) => {
