@@ -4,7 +4,8 @@
   "description": "익스프레스로 만드는 SNS 서비스",
   "main": "app.js",
   "scripts": {
-    "start": "nodemon app"
+    "start": "nodemon app.js"
+    
   },
   "author": "KJH",
   "license": "MIT",
@@ -24,8 +25,5 @@
     "passport-local": "^1.0.0",
     "sequelize": "^5.21.6",
     "sequelize-cli": "^5.5.1"
-  },
-  "devDependencies": {
-    "nodemon": "^2.0.7"
   }
 }
