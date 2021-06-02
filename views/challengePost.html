@@ -1,0 +1,15 @@
+{% extends 'nav.html' %}
+
+ {% block title %}
+ <title>챌린지</title>
+ {% endblock %}
+ 
+ {% block style %}
+ <link rel="stylesheet" href="css/challengeForm/style.css">
+ {% endblock %}
+ 
+ {% block content %}
+   <h1>제목 : {{board.title}} </h1>
+   <h3>작성자 : {{board.author}} </h3>
+   <h3>내용 : {{board.contents}} </h3>
+ {% endblock %}

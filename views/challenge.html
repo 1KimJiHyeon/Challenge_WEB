@@ -1,17 +1,26 @@
 {% extends 'nav.html' %}
 
 {% block title %}
-<title>챌린지 리스트</title>
+<title>챌린지 목록</title>
 {% endblock %}
 
 {% block style %}
-<link rel="stylesheet" href="css/challengeList/animate.css">
-<link rel="stylesheet" href="css/challengeList/icomoon.css">
-<link rel="stylesheet" href="css/challengeList/style.css">
+<link rel="stylesheet" href="css/challenge/animate.css">
+<link rel="stylesheet" href="css/challenge/icomoon.css">
+<link rel="stylesheet" href="css/challenge/style.css">
 {% endblock %}
 
 {% block content %}
 <div class="container">
+    {% for i in range(boards.length-1, -1, -1) %}
+    <br>
+    <a href="/challenge/{{boards[i].id}}">
+        <h1>제목 :{{boards[i].title}}</h1>
+    </a>
+    <h3>작성자 :{{boards[i].author}}</h3>
+    <h3>내용 :{{boards[i].contents}}</h3>
+    <br>
+    {% endfor %}
     <div class="col-lg-9">
         <div class="row">
             <div class="col-md-4 ftco-animate">
@@ -64,12 +73,12 @@
 {% endblock %}
 
 {% block script %}
-<script src="js/challengeList/jquery.min.js"></script>
-<script src="js/challengeList/jquery-migrate-3.0.1.min.js"></script>
-<script src="js/challengeList/jquery.waypoints.min.js"></script>
-<script src="js/challengeList/jquery.stellar.min.js"></script>
-<script src="js/challengeList/owl.carousel.min.js"></script>
-<script src="js/challengeList/aos.js"></script>
-<script src="js/challengeList/scrollax.min.js"></script>
-<script src="js/challengeList/main.js"></script>
+<script src="js/challenge/jquery.min.js"></script>
+<script src="js/challenge/jquery-migrate-3.0.1.min.js"></script>
+<script src="js/challenge/jquery.waypoints.min.js"></script>
+<script src="js/challenge/jquery.stellar.min.js"></script>
+<script src="js/challenge/owl.carousel.min.js"></script>
+<script src="js/challenge/aos.js"></script>
+<script src="js/challenge/scrollax.min.js"></script>
+<script src="js/challenge/main.js"></script>
 {% endblock %}

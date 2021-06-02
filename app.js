@@ -13,9 +13,8 @@ dotenv.config();
 const pageRouter = require('./routes/page');
 const authRouter = require('./routes/auth');
 const postRouter = require('./routes/post');
-const writeRouter = require('./routes/index');
-const usersRouter = require('./routes/users');
 const { sequelize } = require('./models');
+
 // 2. import passport 설정 모듈 (./passport/index.js)
 const passportConfig = require('./passport');
 
@@ -38,13 +37,11 @@ db.once('open', function() {
 passportConfig();
 app.set('port', process.env.PORT || 8001);
 
-// app.set('view engine', 'html');
-// nunjucks.configure('views', {
-//   express: app,
-//   autoescape: true,
-// });
-app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'ejs');
+app.set('view engine', 'html');
+nunjucks.configure('views', {
+  express: app,
+  autoescape: true,
+});
 
 sequelize.sync({ force: false })
   .then(() => {
@@ -79,8 +76,6 @@ app.use(passport.session());
 app.use('/', pageRouter);
 app.use('/auth', authRouter);
 app.use('/post', postRouter);
-app.use('/write', writeRouter);
-app.use('/users', usersRouter);
 
 // 오류 처리: 요청 경로가 없을 경우
 
