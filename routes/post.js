@@ -43,7 +43,11 @@ router.post('/', isLoggedIn, upload2.none(), async (req, res, next) => {
       img: req.body.url,
       UserId: req.user.id,
     });
-    res.redirect('/');
+    Board.findOne({id: req.params.id}, function (err, board) {
+      res.redirect(`/challenge/${board.id}`);
+  })
+
+    
   } catch (error) {
     console.error(error);
     next(error);
