@@ -4,6 +4,7 @@ const path = require('path');
 const fs = require('fs');
 
 const { Post } = require('../models');
+const Board = require('../models/board');
 const { isLoggedIn } = require('./middlewares');
 
 const router = express.Router();
@@ -42,22 +43,12 @@ router.post('/', isLoggedIn, upload2.none(), async (req, res, next) => {
       img: req.body.url,
       UserId: req.user.id,
     });
-    const hashtags = req.body.content.match(/#[^\s#]*/g);
-    if (hashtags) {
-      const result = await Promise.all(
-        hashtags.map(tag => {
-          return Hashtag.findOrCreate({
-            where: { title: tag.slice(1).toLowerCase() },
-          })
-        }),
-      );
-      await post.addHashtags(result.map(r => r[0]));
-    }
     res.redirect('/');
   } catch (error) {
     console.error(error);
     next(error);
   }
 });
+
 
 module.exports = router;

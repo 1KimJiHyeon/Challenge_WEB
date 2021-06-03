@@ -9,7 +9,49 @@
  {% endblock %}
  
  {% block content %}
-   <h1>제목 : {{board.title}} </h1>
-   <h3>작성자 : {{board.author}} </h3>
-   <h3>내용 : {{board.contents}} </h3>
- {% endblock %}
+
+<!-- 
+<form action="/comment/write" method="post">
+<input type="text" name="id" value={{board.id}} hidden>
+댓글 : <textarea name="contents"></textarea><br>
+글쓴이 : <input type="text" name="author"><br>
+<input type="submit" value="확인">
+</form>
+
+
+
+
+ 
+
+<br>
+<h3>작성자 :{{board.comment.author}}</h3>
+<h3>내용 :{{board.comment.contents}}</h3>
+<br> -->
+
+
+      <h1>제목 : {{board.title}} </h1>
+      <h3>작성자 : {{board.author}} </h3>
+      <h3>내용 : {{board.contents}} </h3>
+    <hr>
+
+    {% if board.comments %}
+    {% set comment = board.comments %}
+    {% for i in range(board.comments.length-1, -1, -1) %}
+    <br>
+    <h3>작성자 :{{comment[i].author}}</h3>
+    <h3>내용 :{{comment[i].contents}}</h3>
+    <br>
+    {% endfor %}
+    {% endif %}
+
+
+
+    <form action="/comment/write" method="post">
+      <input type="text" name="id" value="{{board.id}}" hidden>
+      댓글 : <textarea name="contents"></textarea><br>
+      글쓴이 : <input type="text" name="author"><br>
+      <input type="submit" value="확인">
+    </form>
+
+
+{% endblock %}

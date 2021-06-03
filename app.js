@@ -35,7 +35,7 @@ db.once('open', function() {
 
 // 3. passport 설정 함수 실행
 passportConfig();
-app.set('port', process.env.PORT || 8001);
+app.set('port', process.env.PORT || 8002);
 
 app.set('view engine', 'html');
 nunjucks.configure('views', {
