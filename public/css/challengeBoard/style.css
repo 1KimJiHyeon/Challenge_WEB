@@ -486,8 +486,8 @@ pre {
   display: flex;
   -ms-flex-wrap: wrap;
   flex-wrap: wrap;
-  margin-right: -15%;
-  margin-left: -15%; }
+  margin-left: 1%;
+  margin-right: -5%; }
 
 .no-gutters {
   margin-right: 0;
@@ -896,7 +896,7 @@ pre {
     -webkit-box-flex: 0;
     -ms-flex: 0 0 33.33333%;
     flex: 0 0 33.25%;
-    max-width: 30%;
+    max-width: 29%;
     margin-top: 5%;
     margin-right: 46px; }
   .col-md-5 {
