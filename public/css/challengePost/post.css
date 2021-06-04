@@ -1,5 +1,8 @@
 .post {
     width: 300px;
+    margin-right: 43px;
+    margin-top: 60px;
+    margin-bottom: 20px;
 }
 article{
     background-color: #fff;
@@ -9,7 +12,8 @@ article{
 
 header {
     height: 60px;
-    padding: 0 16px;
+    padding-left: 10px;
+    padding-top: 15px;
     display: flex;
     align-items: center;
     justify-content: space-between;
