@@ -46,10 +46,10 @@ router.post('/', isLoggedIn, upload2.none(), async (req, res, next) => {
   post.author = res.locals.user.id;
   post.img = req.body.url;
 
-  Board.findOneAndUpdate({_id : req.body.id}, { $push: { posts : post}}, function (err, board) {
-    if(err){
-        console.log(err);
-        res.redirect('/');
+  Board.findOneAndUpdate({ _id: req.body.id }, { $push: { posts: post } }, function (err, board) {
+    if (err) {
+      console.log(err);
+      res.redirect('/');
     }
     post.save(function (err) {
       if (err) {
@@ -59,8 +59,6 @@ router.post('/', isLoggedIn, upload2.none(), async (req, res, next) => {
       res.redirect(`/challengeBoard/${board.id}`);
     });
   });
-    // res.redirect(`/challengeBoard/${board.id}`);
-// });
 });
 
 module.exports = router;

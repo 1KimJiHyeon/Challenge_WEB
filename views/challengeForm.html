@@ -1,53 +1,53 @@
 {% extends 'nav.html' %}
 
- {% block title %}
- <title>챌린지 만들기</title>
- {% endblock %}
- 
- {% block style %}
- <link rel="stylesheet" href="css/challengeForm/style.css">
- <link rel="stylesheet" href="/main.css">
- {% endblock %}
- 
- {% block content %}
- <form action="/board/write" method="post" enctype="multipart/form-data">
+{% block title %}
+<title>챌린지 만들기</title>
+{% endblock %}
+
+{% block style %}
+<link rel="stylesheet" href="css/challengeForm/style.css">
+<link rel="stylesheet" href="/main.css">
+{% endblock %}
+
+{% block content %}
+<form action="/board/write" method="post" enctype="multipart/form-data">
   <div class="img-preview">
     <img id="img-preview" src="" style="display: none;" width="250" alt="미리보기">
     <input id="img-url" type="hidden" name="url">
-  </div>  
+  </div>
   제목 : <input type="text" name="title"><br>
-    내용 : <textarea name="contents"></textarea><br>
-      <label id="img-label" for="img">사진 업로드</label>
-      <input id="img" type="file" accept="image/*">
-    <input type="submit" value="확인">
-  </form>
- {% endblock %}
+  내용 : <textarea name="contents"></textarea><br>
+  <label id="img-label" for="img">사진 업로드</label>
+  <input id="img" type="file" accept="image/*">
+  <input type="submit" value="확인">
+</form>
+{% endblock %}
 
- {% block script %}
+{% block script %}
 <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-      <script>
-        window.onload = () => {
-          if (new URL(location.href).searchParams.get('loginError')) {
-            alert(new URL(location.href).searchParams.get('loginError'));
-          }
-        };
-      </script>
-      <script>
-        if (document.getElementById('img')) {
-          document.getElementById('img').addEventListener('change', function(e) {
-            const formData = new FormData();
-            console.log(this, this.files);
-            formData.append('img', this.files[0]);
-            axios.post('/post/img', formData)
-              .then((res) => {
-                document.getElementById('img-url').value = res.data.url;
-                document.getElementById('img-preview').src = res.data.url;
-                document.getElementById('img-preview').style.display = 'inline';
-              })
-              .catch((err) => {
-                console.error(err);
-              });
-          });
-        }
-      </script>
+<script>
+  window.onload = () => {
+    if (new URL(location.href).searchParams.get('loginError')) {
+      alert(new URL(location.href).searchParams.get('loginError'));
+    }
+  };
+</script>
+<script>
+  if (document.getElementById('img')) {
+    document.getElementById('img').addEventListener('change', function (e) {
+      const formData = new FormData();
+      console.log(this, this.files);
+      formData.append('img', this.files[0]);
+      axios.post('/post/img', formData)
+        .then((res) => {
+          document.getElementById('img-url').value = res.data.url;
+          document.getElementById('img-preview').src = res.data.url;
+          document.getElementById('img-preview').style.display = 'inline';
+        })
+        .catch((err) => {
+          console.error(err);
+        });
+    });
+  }
+</script>
 {% endblock %}

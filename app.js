@@ -29,14 +29,14 @@ var promise = mongoose.connect('mongodb://localhost/mydb', {
 
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
-db.once('open', function() {
-    // we're connected!
-    console.log('connected successfully');
+db.once('open', function () {
+  // we're connected!
+  console.log('connected successfully');
 });
 
 // 3. passport 설정 함수 실행
 passportConfig();
-app.set('port', process.env.PORT || 8002);
+app.set('port', process.env.PORT || 8001);
 
 app.set('view engine', 'html');
 nunjucks.configure('views', {
@@ -84,7 +84,7 @@ app.use('/post', postRouter);
 app.use('/', pageRouter);
 
 app.use((req, res, next) => {
-  const error =  new Error(`${req.method} ${req.url} 라우터가 없습니다.`);
+  const error = new Error(`${req.method} ${req.url} 라우터가 없습니다.`);
   error.status = 404;
   next(error);
 });

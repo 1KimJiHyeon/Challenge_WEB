@@ -13,7 +13,6 @@ router.use((req, res, next) => {
   next();
 });
 
-
 try {
   fs.readdirSync('uploads');
 } catch (error) {

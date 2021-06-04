@@ -84,29 +84,29 @@
 <script src="js/challenge/scrollax.min.js"></script>
 <script src="js/challenge/main.js"></script>
 <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-      <script>
-        window.onload = () => {
-          if (new URL(location.href).searchParams.get('loginError')) {
+<script>
+    window.onload = () => {
+        if (new URL(location.href).searchParams.get('loginError')) {
             alert(new URL(location.href).searchParams.get('loginError'));
-          }
-        };
-      </script>
-      <script>
-        if (document.getElementById('img')) {
-          document.getElementById('img').addEventListener('change', function(e) {
+        }
+    };
+</script>
+<script>
+    if (document.getElementById('img')) {
+        document.getElementById('img').addEventListener('change', function (e) {
             const formData = new FormData();
             console.log(this, this.files);
             formData.append('img', this.files[0]);
             axios.post('/post/img', formData)
-              .then((res) => {
-                document.getElementById('img-url').value = res.data.url;
-                document.getElementById('img-preview').src = res.data.url;
-                document.getElementById('img-preview').style.display = 'inline';
-              })
-              .catch((err) => {
-                console.error(err);
-              });
-          });
-        }
-      </script>
+                .then((res) => {
+                    document.getElementById('img-url').value = res.data.url;
+                    document.getElementById('img-preview').src = res.data.url;
+                    document.getElementById('img-preview').style.display = 'inline';
+                })
+                .catch((err) => {
+                    console.error(err);
+                });
+        });
+    }
+</script>
 {% endblock %}
