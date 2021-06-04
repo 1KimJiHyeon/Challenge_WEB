@@ -11,7 +11,13 @@ router.use((req, res, next) => {
 });
 
 router.get('/profile', isLoggedIn, (req, res) => {
-  res.render('profile', { user: res.locals.user  });
+  res.render('profile');
+});
+
+router.get('/my', isLoggedIn, (req, res) => {
+  Board.find({author:res.locals.user.id}, function (err, boards) {
+    res.render('my', { boards: boards });
+  });
 });
 
 router.get('/join', isNotLoggedIn, (req, res) => {

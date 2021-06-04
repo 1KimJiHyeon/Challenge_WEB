@@ -1,0 +1,23 @@
+{% extends 'nav.html' %}
+
+{% block title %}
+<title>내가 쓴 글</title>
+{% endblock %}
+
+{% block style %}
+<link rel="stylesheet" href="css/myPage/style.css">
+{% endblock %}
+
+{% block content %}
+
+{% for i in range(boards.length-1, -1, -1) %}
+<br>
+<a href="/challengeBoard/{{boards[i].id}}">
+    <h1>제목 :{{boards[i].title}}</h1>
+</a>
+<div class="twit-img"><img src="{{boards[i].img}}" alt="섬네일"></div>
+<h3>작성자 :{{boards[i].author}}</h3>
+<h3>내용 :{{boards[i].contents}}</h3>
+<br>
+{% endfor %}
+{% endblock %}
