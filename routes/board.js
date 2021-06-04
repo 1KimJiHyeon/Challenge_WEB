@@ -3,7 +3,6 @@ const multer = require('multer');
 const path = require('path');
 const fs = require('fs');
 
-const { Post } = require('../models');
 const Board = require('../models/board');
 const { isLoggedIn } = require('./middlewares');
 
@@ -35,23 +34,20 @@ router.post('/img', isLoggedIn, upload.single('img'), (req, res) => {
 });
 
 const upload2 = multer();
-router.post('/', isLoggedIn, upload2.none(), async (req, res, next) => {
-  try {
-    console.log(req.user);
-    const post = await Post.create({
-      content: req.body.content,
-      img: req.body.url,
-      UserId: req.user.id,
-    });
-    Board.findOne({ id: req.params.id }, function (err, board) {
-      res.redirect(`/challengeBoard/${board.id}`);
-    })
+router.post('/write', isLoggedIn, upload2.none(), async (req, res, next) => {
+  var board = new Board();
+  board.title = req.body.title;
+  board.contents = req.body.contents;
+  board.author = req.body.author;
+  board.img = req.body.url;
 
-
-  } catch (error) {
-    console.error(error);
-    next(error);
-  }
+  board.save(function (err) {
+    if (err) {
+      console.log(err);
+      res.redirect('/challengeBoard');
+    }
+    res.redirect('/challengeBoard');
+  });
 });
 
 module.exports = router;
