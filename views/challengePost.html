@@ -5,11 +5,41 @@
 {% endblock %}
 
 {% block style %}
-<link rel="stylesheet" href="css/challengeForm/style.css">
 <link rel="stylesheet" href="/main.css">
+<link rel="stylesheet" href="/post.css">
 {% endblock %}
 
 {% block content %}
+  {% if board.posts %}
+  {% set post= board.posts %}
+  {% for i in range(board.posts.length-1, -1, -1) %}
+  <div class="post">
+    <article>
+      <header>
+        <div class="profile-of-article">
+          <img class="img-profile" src="{{post[i].img}}">
+          <span class=" main-id">작성자 : {{post[i].author}}</span>
+        </div>
+      </header>
+  
+      <div class="hl"></div>
+  
+      <div class="main-image">
+        <img class="img-main" src="{{post[i].img}}">
+      </div>
+  
+      <div class="hl"></div>
+  
+      <div class="main-content">
+        <div class="main-contentin">
+          내용 : {{post[i].contents}}
+        </div>
+      </div>
+    </article>
+  </div>
+  {% endfor %}
+  {% endif %}
+
 <div class="timeline">
   <div>
     <form id="twit-form" action="/post" method="post" enctype="multipart/form-data">
@@ -26,19 +56,8 @@
       </div>
     </form>
   </div>
-  <div class="twits">
-    {% if board.posts %}
-    {% set post= board.posts %}
-    {% for i in range(board.posts.length-1, -1, -1) %}
-    <div class="twit">
-      <div class="twit-content">작성자 : {{post[i].author}}</div>
-      <div class="twit-content">내용 : {{post[i].contents}}</div>
-      <div class="twit-img"><img src="{{post[i].img}}" alt="섬네일"></div>
-    </div>
-    {% endfor %}
-    {% endif %}
-  </div>
 </div>
+
 {% endblock %}
 
 {% block script %}
