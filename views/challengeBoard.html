@@ -5,74 +5,47 @@
 {% endblock %}
 
 {% block style %}
-<link rel="stylesheet" href="css/challenge/animate.css">
-<link rel="stylesheet" href="css/challenge/icomoon.css">
-<link rel="stylesheet" href="css/challenge/style.css">
-<link rel="stylesheet" href="/main.css">
+<link rel="stylesheet" href="css/challengeBoard/animate.css">
+<link rel="stylesheet" href="css/challengeBoard/icomoon.css">
+<link rel="stylesheet" href="css/challengeBoard/style.css">
 {% endblock %}
 
 {% block content %}
 <div class="container">
-
-
-    {% for i in range(boards.length-1, -1, -1) %}
-    <br>
-    {% if boards[i].img %}
-    <a href="/challengeBoard/{{boards[i].id}}"><img src="{{boards[i].img}}" alt="섬네일"></a>
-    {% endif %}
-    <a href="/challengeBoard/{{boards[i].id}}"><h3>제목 :{{boards[i].title}}</h3></a>
-    <h3>내용 :{{boards[i].contents}}</h3>
-    <h3>작성자 :{{boards[i].author}}</h3>
-    <br>
-    {% endfor %}
-
-
-
     <div class="col-lg-9">
         <div class="row">
+            {% for i in range(boards.length-1, -1, -1) %}
             <div class="col-md-4 ftco-animate">
                 <div class="destination">
-                    <a href="login" class="img d-flex justify-content-center align-items-center"
-                        style="background-image: url(img/destination-1.jpg);">
-                        <div class="icon d-flex justify-content-center align-items-center">
-                            <span class="icon-search2"></span>
+                    {% if boards[i].img %}
+                    <a href="/challengeBoard/{{boards[i].id}}"
+                        class="img d-flex justify-content-center align-items-center"
+                        style="background-image: url({{boards[i].img}});"></a>
+                    {% endif %}
+                    <a href="/challengeBoard/{{boards[i].id}}">
+                        <div class="text p-3">
+                            <h3>제목 :{{boards[i].title}}</h3>
+                            <h3>내용 :{{boards[i].contents}}</h3>
+                            <span class="listing">{{boards[i].author}}</span>
                         </div>
                     </a>
-                    <div class="text p-3">
-                        <h3>
-                            <a href="#">Australia</a>
-                        </h3>
-                        <span class="listing">3 Listing</span>
-                    </div>
                 </div>
             </div>
-            <div class="col-md-4 ftco-animate">
-                <div class="destination">
-                    <a href="#" class="img d-flex justify-content-center align-items-center"
-                        style="background-image: url(img/destination-1.jpg);">
-                    </a>
-                    <div class="text p-3">
-                        <h3>
-                            <a href="#">Paris</a>
-                        </h3>
-                        <span class="listing">3 Listing</span>
-                    </div>
-                </div>
-            </div>
+            {% endfor %}
         </div>
     </div>
 </div>
 {% endblock %}
 
 {% block script %}
-<script src="js/challenge/jquery.min.js"></script>
-<script src="js/challenge/jquery-migrate-3.0.1.min.js"></script>
-<script src="js/challenge/jquery.waypoints.min.js"></script>
-<script src="js/challenge/jquery.stellar.min.js"></script>
-<script src="js/challenge/owl.carousel.min.js"></script>
-<script src="js/challenge/aos.js"></script>
-<script src="js/challenge/scrollax.min.js"></script>
-<script src="js/challenge/main.js"></script>
+<script src="js/challengeBoard/jquery.min.js"></script>
+<script src="js/challengeBoard/jquery-migrate-3.0.1.min.js"></script>
+<script src="js/challengeBoard/jquery.waypoints.min.js"></script>
+<script src="js/challengeBoard/jquery.stellar.min.js"></script>
+<script src="js/challengeBoard/owl.carousel.min.js"></script>
+<script src="js/challengeBoard/aos.js"></script>
+<script src="js/challengeBoard/scrollax.min.js"></script>
+<script src="js/challengeBoard/main.js"></script>
 <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 <script>
     window.onload = () => {
