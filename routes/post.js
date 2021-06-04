@@ -51,8 +51,16 @@ router.post('/', isLoggedIn, upload2.none(), async (req, res, next) => {
         console.log(err);
         res.redirect('/');
     }
-    res.redirect(`/challengeBoard/${board.id}`);
-});
+    post.save(function (err) {
+      if (err) {
+        console.log(err);
+        res.redirect(`/challengeBoard/${board.id}`);
+      }
+      res.redirect(`/challengeBoard/${board.id}`);
+    });
+  });
+    // res.redirect(`/challengeBoard/${board.id}`);
+// });
 });
 
 module.exports = router;

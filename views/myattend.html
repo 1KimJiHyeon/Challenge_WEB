@@ -1,0 +1,20 @@
+{% extends 'nav.html' %}
+
+{% block title %}
+<title>참여한</title>
+{% endblock %}
+
+{% block style %}
+<link rel="stylesheet" href="css/myPage/style.css">
+{% endblock %}
+
+{% block content %}
+
+{% for i in range(posts.length-1, -1, -1) %}
+<br>
+<div class="twit-img"><img src="{{posts[i].img}}" alt="섬네일"></div>
+<h3>작성자 :{{posts[i].author}}</h3>
+<h3>내용 :{{posts[i].contents}}</h3>
+<br>
+{% endfor %}
+{% endblock %}

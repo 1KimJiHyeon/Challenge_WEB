@@ -2,6 +2,7 @@ const express = require('express');
 const { isLoggedIn, isNotLoggedIn } = require('./middlewares');
 const { User } = require('../models');
 const Board = require('../models/board');
+const Post = require('../models/post');
 
 const router = express.Router();
 
@@ -14,9 +15,15 @@ router.get('/profile', isLoggedIn, (req, res) => {
   res.render('profile');
 });
 
-router.get('/my', isLoggedIn, (req, res) => {
+router.get('/mycreate', isLoggedIn, (req, res) => {
   Board.find({author:res.locals.user.id}, function (err, boards) {
-    res.render('my', { boards: boards });
+    res.render('mycreate', { boards: boards });
+  });
+});
+
+router.get('/myattend', isLoggedIn, (req, res) => {
+  Post.find({author:res.locals.user.id}, function (err, posts) {
+    res.render('myattend', { posts: posts });
   });
 });
 
