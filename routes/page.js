@@ -1,6 +1,6 @@
 const express = require('express');
 const { isLoggedIn, isNotLoggedIn } = require('./middlewares');
-const { Post, User } = require('../models');
+const { User } = require('../models');
 const Board = require('../models/board');
 
 const router = express.Router();
@@ -30,7 +30,7 @@ router.get('/challengeForm', (req, res) => {
 
 router.get('/challengeBoard/:id', function (req, res) {
   Board.findOne({_id: req.params.id}, function (err, board) {
-      res.render('challengePost', { title: 'Board', board: board });
+      res.render('challengePost', { board: board });
   })
 });
 

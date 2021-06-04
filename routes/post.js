@@ -9,6 +9,11 @@ const { isLoggedIn } = require('./middlewares');
 
 const router = express.Router();
 
+router.use((req, res, next) => {
+  res.locals.user = req.user;
+  next();
+});
+
 try {
   fs.readdirSync('uploads');
 } catch (error) {
@@ -38,7 +43,7 @@ const upload2 = multer();
 router.post('/', isLoggedIn, upload2.none(), async (req, res, next) => {
   var post = new Post();
   post.contents = req.body.contents;
-  post.author = req.body.author;
+  post.author = res.locals.user.id;
   post.img = req.body.url;
 
   Board.findOneAndUpdate({_id : req.body.id}, { $push: { posts : post}}, function (err, board) {

@@ -8,6 +8,12 @@ const { isLoggedIn } = require('./middlewares');
 
 const router = express.Router();
 
+router.use((req, res, next) => {
+  res.locals.user = req.user;
+  next();
+});
+
+
 try {
   fs.readdirSync('uploads');
 } catch (error) {
@@ -38,7 +44,7 @@ router.post('/write', isLoggedIn, upload2.none(), async (req, res, next) => {
   var board = new Board();
   board.title = req.body.title;
   board.contents = req.body.contents;
-  board.author = req.body.author;
+  board.author = res.locals.user.id;
   board.img = req.body.url;
 
   board.save(function (err) {
