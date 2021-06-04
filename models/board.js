@@ -6,6 +6,7 @@ var Schema = mongoose.Schema;
 
 var commentSchema = new Schema({
     contents: String,
+    img:String,
     author: String,
     comment_date: {type: Date, default: Date.now()}
 });

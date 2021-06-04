@@ -15,82 +15,34 @@
 
     <div>
       <form id="twit-form" action="/post" method="post" enctype="multipart/form-data">
-        <div class="input-group">
-          <textarea id="twit" name="content" maxlength="140"></textarea>
-        </div>
+        <input type="text" name="id" value="{{board.id}}" hidden>
         <div class="img-preview">
           <img id="img-preview" src="" style="display: none;" width="250" alt="미리보기">
           <input id="img-url" type="hidden" name="url">
         </div>
         <div>
-          <label id="img-label" for="img">사진 업로드</label>
-          <input id="img" type="file" accept="image/*">
-          <button id="twit-btn" type="submit" class="btn">짹짹</button>
+          내용 : <textarea name="contents"></textarea><br>
+          글쓴이 : <input type="text" name="author"><br>
+            <label id="img-label" for="img">사진 업로드</label>
+            <input id="img" type="file" accept="image/*">
+          <input type="submit" value="확인">
         </div>
       </form>
     </div>
   <!-- 없어도 항상 나타나는 부분 -->
   <div class="twits">
-    <form id="hashtag-form" action="/hashtag">
-      <input type="text" name="hashtag" placeholder="태그 검색">
-      <button class="btn">검색</button>
-    </form>
-    {% for twit in twits %}
+  {% if board.comments %}
+  {% set comment= board.comments %}
+  {% for i in range(board.comments.length-1, -1, -1) %}
       <div class="twit">
-        <input type="hidden" value="{{twit.User.id}}" class="twit-user-id">
-        <input type="hidden" value="{{twit.id}}" class="twit-id">
-        <div class="twit-author">{{twit.User.nick}}</div>
-
-        <div class="twit-content">{{twit.content}}</div>
-          <div class="twit-img"><img src="{{twit.img}}" alt="섬네일"></div>
+        <div class="twit-content">작성자 : {{comment[i].author}}</div>
+        <div class="twit-content">내용 : {{comment[i].contents}}</div>
+          <div class="twit-img"><img src="{{comment[i].img}}" alt="섬네일"></div>
       </div>
     {% endfor %}
+    {% endif %}
   </div>
 </div>
-<!-- 
-<form action="/comment/write" method="post">
-<input type="text" name="id" value={{board.id}} hidden>
-댓글 : <textarea name="contents"></textarea><br>
-글쓴이 : <input type="text" name="author"><br>
-<input type="submit" value="확인">
-</form>
-
-
-
-
- 
-
-<br>
-<h3>작성자 :{{board.comment.author}}</h3>
-<h3>내용 :{{board.comment.contents}}</h3>
-<br> -->
-
-
-      <!-- <h1>제목 : {{board.title}} </h1>
-      <h3>작성자 : {{board.author}} </h3>
-      <h3>내용 : {{board.contents}} </h3>
-    <hr>
-
-    {% if board.comments %}
-    {% set comment = board.comments %}
-    {% for i in range(board.comments.length-1, -1, -1) %}
-    <br>
-    <h3>작성자 :{{comment[i].author}}</h3>
-    <h3>내용 :{{comment[i].contents}}</h3>
-    <br>
-    {% endfor %}
-    {% endif %}
-
-
-
-    <form action="/comment/write" method="post">
-      <input type="text" name="id" value="{{board.id}}" hidden>
-      댓글 : <textarea name="contents"></textarea><br>
-      글쓴이 : <input type="text" name="author"><br>
-      <input type="submit" value="확인">
-    </form> -->
-
-
 {% endblock %}
 
 {% block script %}

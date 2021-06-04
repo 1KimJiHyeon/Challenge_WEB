@@ -29,24 +29,28 @@ router.get('/challengeForm', (req, res) => {
 });
 
 /* board find by id */
-router.get('/challengeBoard/:id', async function (req, res) {
-  try {
-    const posts = await Post.findAll({
-      include: {
-        model: User,
-        attributes: ['id', 'nick'],
-      },
-      order: [['createdAt', 'DESC']],
-    });
-    Board.findOne({ _id: req.params.id }, function (err, board) {
-      res.render('challengePost', { board: board, twits: posts });
-    })
-  } catch (err) {
-    console.error(err);
-    next(err);
-  }
+// router.get('/challengeBoard/:id', async function (req, res) {
+//   try {
+//     const posts = await Post.findAll({
+//       include: {
+//         model: User,
+//         attributes: ['id', 'nick'],
+//       },
+//       order: [['createdAt', 'DESC']],
+//     });
+//     Board.findOne({ _id: req.params.id }, function (err, board) {
+//       res.render('challengePost', { board: board, twits: posts });
+//     })
+//   } catch (err) {
+//     console.error(err);
+//     next(err);
+//   }
+// });
 
-
+router.get('/challengeBoard/:id', function (req, res) {
+  Board.findOne({_id: req.params.id}, function (err, board) {
+      res.render('challengePost', { title: 'Board', board: board });
+  })
 });
 
 router.get('/', async (req, res, next) => {

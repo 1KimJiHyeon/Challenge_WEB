@@ -5,6 +5,7 @@ const fs = require('fs');
 
 const { Post } = require('../models');
 const Board = require('../models/board');
+const Comment = require('../models/comment');
 const { isLoggedIn } = require('./middlewares');
 
 const router = express.Router();
@@ -36,22 +37,18 @@ router.post('/img', isLoggedIn, upload.single('img'), (req, res) => {
 
 const upload2 = multer();
 router.post('/', isLoggedIn, upload2.none(), async (req, res, next) => {
-  try {
-    console.log(req.user);
-    const post = await Post.create({
-      content: req.body.content,
-      img: req.body.url,
-      UserId: req.user.id,
-    });
-    Board.findOne({ id: req.params.id }, function (err, board) {
-      res.redirect(`/challengeBoard/${board.id}`);
-    })
+  var comment = new Comment();
+  comment.contents = req.body.contents;
+  comment.author = req.body.author;
+  comment.img = req.body.url;
 
-
-  } catch (error) {
-    console.error(error);
-    next(error);
-  }
+  Board.findOneAndUpdate({_id : req.body.id}, { $push: { comments : comment}}, function (err, board) {
+    if(err){
+        console.log(err);
+        res.redirect('/');
+    }
+    res.redirect(`/challengeBoard/${board.id}`);
+});
 });
 
 module.exports = router;
