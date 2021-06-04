@@ -3,9 +3,8 @@ const multer = require('multer');
 const path = require('path');
 const fs = require('fs');
 
-const { Post } = require('../models');
 const Board = require('../models/board');
-const Comment = require('../models/comment');
+const Post = require('../models/post');
 const { isLoggedIn } = require('./middlewares');
 
 const router = express.Router();
@@ -37,12 +36,12 @@ router.post('/img', isLoggedIn, upload.single('img'), (req, res) => {
 
 const upload2 = multer();
 router.post('/', isLoggedIn, upload2.none(), async (req, res, next) => {
-  var comment = new Comment();
-  comment.contents = req.body.contents;
-  comment.author = req.body.author;
-  comment.img = req.body.url;
+  var post = new Post();
+  post.contents = req.body.contents;
+  post.author = req.body.author;
+  post.img = req.body.url;
 
-  Board.findOneAndUpdate({_id : req.body.id}, { $push: { comments : comment}}, function (err, board) {
+  Board.findOneAndUpdate({_id : req.body.id}, { $push: { posts : post}}, function (err, board) {
     if(err){
         console.log(err);
         res.redirect('/');

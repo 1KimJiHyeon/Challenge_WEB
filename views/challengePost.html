@@ -11,8 +11,6 @@
  
  {% block content %}
  <div class="timeline">
-  <!-- 사용자 있으면 입려 가능 -->
-
     <div>
       <form id="twit-form" action="/post" method="post" enctype="multipart/form-data">
         <input type="text" name="id" value="{{board.id}}" hidden>
@@ -29,15 +27,14 @@
         </div>
       </form>
     </div>
-  <!-- 없어도 항상 나타나는 부분 -->
   <div class="twits">
-  {% if board.comments %}
-  {% set comment= board.comments %}
-  {% for i in range(board.comments.length-1, -1, -1) %}
+  {% if board.posts %}
+  {% set post= board.posts %}
+  {% for i in range(board.posts.length-1, -1, -1) %}
       <div class="twit">
-        <div class="twit-content">작성자 : {{comment[i].author}}</div>
-        <div class="twit-content">내용 : {{comment[i].contents}}</div>
-          <div class="twit-img"><img src="{{comment[i].img}}" alt="섬네일"></div>
+        <div class="twit-content">작성자 : {{post[i].author}}</div>
+        <div class="twit-content">내용 : {{post[i].contents}}</div>
+          <div class="twit-img"><img src="{{post[i].img}}" alt="섬네일"></div>
       </div>
     {% endfor %}
     {% endif %}

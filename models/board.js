@@ -4,11 +4,11 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
-var commentSchema = new Schema({
+var postSchema = new Schema({
     contents: String,
     img:String,
     author: String,
-    comment_date: {type: Date, default: Date.now()}
+    post_date: {type: Date, default: Date.now()}
 });
 
 var boardSchema = new Schema({
@@ -17,7 +17,7 @@ var boardSchema = new Schema({
     author: String,
     img:String,
     board_date: {type: Date, default: Date.now()},
-    comments: [commentSchema]
+    posts: [postSchema]
 });
 
 module.exports = mongoose.model('board', boardSchema);

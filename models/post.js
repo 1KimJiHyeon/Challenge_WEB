@@ -1,29 +1,14 @@
-const Sequelize = require('sequelize');
+/**
+ * Created by ss on 2017-07-11.
+ */
+var mongoose = require('mongoose');
+var Schema = mongoose.Schema;
 
-module.exports = class Post extends Sequelize.Model {
-  static init(sequelize) {
-    return super.init({
-      content: {
-        type: Sequelize.STRING(140),
-        allowNull: false,
-      },
-      img: {
-        type: Sequelize.STRING(200),
-        allowNull: true,
-      },
-    }, {
-      sequelize,
-      timestamps: true,
-      underscored: false,
-      modelName: 'Post',
-      tableName: 'posts',
-      paranoid: false,
-      charset: 'utf8mb4',
-      collate: 'utf8mb4_general_ci',
-    });
-  }
+var postSchema = new Schema({
+    contents: String,
+    img: String,
+    author: String,
+    post_date: {type: Date, default: Date.now()}
+});
 
-  static associate(db) {
-    db.Post.belongsTo(db.User);
-  }
-};
+module.exports = mongoose.model('post', postSchema);
