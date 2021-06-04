@@ -14,6 +14,7 @@ var boardSchema = new Schema({
     title: String,
     contents: String,
     author: String,
+    img:String,
     board_date: {type: Date, default: Date.now()},
     comments: [commentSchema]
 });
