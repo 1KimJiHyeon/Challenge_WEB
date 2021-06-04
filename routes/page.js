@@ -16,13 +16,13 @@ router.get('/profile', isLoggedIn, (req, res) => {
 });
 
 router.get('/mycreate', isLoggedIn, (req, res) => {
-  Board.find({ author: res.locals.user.id }, function (err, boards) {
+  Board.find({ userId: res.locals.user.id }, function (err, boards) {
     res.render('mycreate', { boards: boards });
   });
 });
 
 router.get('/myattend', isLoggedIn, (req, res) => {
-  Post.find({ author: res.locals.user.id }, function (err, posts) {
+  Post.find({ userId: res.locals.user.id }, function (err, posts) {
     res.render('myattend', { posts: posts });
   });
 });

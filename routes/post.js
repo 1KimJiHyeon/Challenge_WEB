@@ -42,8 +42,9 @@ router.post('/img', isLoggedIn, upload.single('img'), (req, res) => {
 const upload2 = multer();
 router.post('/', isLoggedIn, upload2.none(), async (req, res, next) => {
   var post = new Post();
+  post.userId = res.locals.user.id;
   post.contents = req.body.contents;
-  post.author = res.locals.user.id;
+  post.author = res.locals.user.nick;
   post.img = req.body.url;
 
   Board.findOneAndUpdate({ _id: req.body.id }, { $push: { posts: post } }, function (err, board) {

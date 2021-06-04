@@ -2,6 +2,7 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
 var postSchema = new Schema({
+    userId: String,
     contents: String,
     img:String,
     author: String,
@@ -9,6 +10,7 @@ var postSchema = new Schema({
 });
 
 var boardSchema = new Schema({
+    userId: String,
     title: String,
     contents: String,
     author: String,

@@ -41,9 +41,10 @@ router.post('/img', isLoggedIn, upload.single('img'), (req, res) => {
 const upload2 = multer();
 router.post('/write', isLoggedIn, upload2.none(), async (req, res, next) => {
   var board = new Board();
+  board.userId = res.locals.user.id;
   board.title = req.body.title;
   board.contents = req.body.contents;
-  board.author = res.locals.user.id;
+  board.author = res.locals.user.nick;
   board.img = req.body.url;
 
   board.save(function (err) {
