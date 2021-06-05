@@ -1,0 +1,13 @@
+.title-form{
+font-size: large;
+color: black;
+font-weight: bold;
+}
+.contents-form{
+    font-size: medium;
+    color: black;
+}
+.author-form{
+    font-size: small;
+    color: #448aff;
+}

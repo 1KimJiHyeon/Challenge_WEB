@@ -21,6 +21,11 @@
       <nav class="navbar header-navbar pcoded-header">
         <div class="navbar-wrapper">
           <div class="navbar-logo">
+            <div class="sidebar_toggle" style="margin-bottom: -15px;">
+              <a href="javascript:void(0)">
+                <i class="ti-menu"></i>
+              </a>
+            </div>
             <a href="/" style="margin-left:550px; margin-top: 5px;">
               <img src="/img/logo.png" width="380px" height="58px">
             </a>
@@ -67,22 +72,6 @@
       </nav>
     </div>
 
-    <!-- <div class="timeline">
-      
-        
-        <div class="img-preview">
-          <img id="img-preview" src="" style="display: none;" width="250" alt="미리보기">
-          <input id="img-url" type="hidden" name="url">
-        </div>
-        <div>
-          내용 : <textarea name="contents"></textarea><br>
-          <label id="img-label" for="img">사진 업로드</label>
-          <input id="img" type="file" accept="image/*">
-          <input type="submit" value="확인">
-        </div>
-      </form>
-  </div> -->
-
     <nav class="pcoded-navbar">
       <div class="pcoded-inner-navbar main-menu" style="background: #448aff;">
         <div class="post-form">
@@ -99,10 +88,10 @@
               <div class="hl-form"></div>
 
               <div class="main-image-form">
-                  <label id="img-label" class="img_add_btn" for="img"></label>
-                  <input id="img"  type="file" accept="image/*" style="display: none;">
-                  <img id="img-preview" class="img-main-form" src="" style="display: none;">
-                  <input id="img-url" type="hidden" name="url">
+                <label id="img-label" class="img_add_btn" for="img"></label>
+                <input id="img" type="file" accept="image/*" style="display: none;">
+                <img id="img-preview" class="img-main-form" src="" style="display: none;">
+                <input id="img-url" type="hidden" name="url">
               </div>
 
               <div class="hl-form"></div>
@@ -114,7 +103,7 @@
             <input class="post_btn-form" type="submit" value="확인">
           </form>
         </div>
-        
+
       </div>
     </nav>
     <div class="pcoded-main-container">
