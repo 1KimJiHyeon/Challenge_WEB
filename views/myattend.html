@@ -5,16 +5,70 @@
 {% endblock %}
 
 {% block style %}
-<link rel="stylesheet" href="css/myPage/style.css">
+<link rel="stylesheet" href="/css/myattend/post.css">
+<link rel="stylesheet" href="/css/myattend/style.css">
 {% endblock %}
 
 {% block content %}
+<div class="container">
+    <div class="col-lg-9">
+        <div class="row">
+            {% for i in range(posts.length-1, -1, -1) %}
+            <div class="post">
+                <article>
+                    <header>
+                        <div class="profile-of-article">
+                            <img class="img-profile" src="{{posts[i].img}}">
+                            <span class=" main-id">작성자 : {{posts[i].author}}</span>
+                        </div>
+                    </header>
 
-{% for i in range(posts.length-1, -1, -1) %}
-<br>
-<div class="twit-img"><img src="{{posts[i].img}}" alt="섬네일"></div>
-<h3>작성자 :{{posts[i].author}}</h3>
-<h3>내용 :{{posts[i].contents}}</h3>
-<br>
-{% endfor %}
+                    <div class="hl"></div>
+
+                    <div class="main-image">
+                        <img class="img-main" src="{{posts[i].img}}">
+                    </div>
+
+                    <div class="hl"></div>
+
+                    <div class="main-content">
+                        <div class="main-contentin">
+                            내용 : {{posts[i].contents}}
+                        </div>
+                    </div>
+                </article>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block script %}
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script>
+    window.onload = () => {
+        if (new URL(location.href).searchParams.get('loginError')) {
+            alert(new URL(location.href).searchParams.get('loginError'));
+        }
+    };
+</script>
+<script>
+    if (document.getElementById('img')) {
+        document.getElementById('img').addEventListener('change', function (e) {
+            const formData = new FormData();
+            console.log(this, this.files);
+            formData.append('img', this.files[0]);
+            axios.post('/post/img', formData)
+                .then((res) => {
+                    document.getElementById('img-url').value = res.data.url;
+                    document.getElementById('img-preview').src = res.data.url;
+                    document.getElementById('img-preview').style.display = 'inline';
+                })
+                .catch((err) => {
+                    console.error(err);
+                });
+        });
+    }
+</script>
 {% endblock %}

@@ -5,17 +5,70 @@
 {% endblock %}
 
 {% block style %}
-<link rel="stylesheet" href="css/myPage/style.css">
+<link rel="stylesheet" href="/css/mycreate/animate.css">
+<link rel="stylesheet" href="/css/mycreate/style.css">
 {% endblock %}
 
 {% block content %}
+<div class="container">
+    <div class="col-lg-9">
+        <div class="row">
+            {% for i in range(boards.length-1, -1, -1) %}
+            <div class="col-md-4 ftco-animate">
+                <div class="destination">
+                    {% if boards[i].img %}
+                    <a href="/challengeBoard/{{boards[i].id}}"
+                        class="img d-flex justify-content-center align-items-center"
+                        style="background-image: url({{boards[i].img}});"></a>
+                    {% endif %}
+                    <a href="/challengeBoard/{{boards[i].id}}">
+                        <div class="text p-3">
+                            <h3>제목 :{{boards[i].title}}</h3>
+                            <h3>내용 :{{boards[i].contents}}</h3>
+                            <span class="listing">{{boards[i].author}}</span>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% endblock %}
 
-{% for i in range(boards.length-1, -1, -1) %}
-<br>
-<h1>제목 :{{boards[i].title}}</h1>
-<div class="twit-img"><img src="{{boards[i].img}}" alt="섬네일"></div>
-<h3>작성자 :{{boards[i].author}}</h3>
-<h3>내용 :{{boards[i].contents}}</h3>
-<br>
-{% endfor %}
+{% block script %}
+<script src="js/mycreate/jquery.min.js"></script>
+<script src="js/mycreate/jquery-migrate-3.0.1.min.js"></script>
+<script src="js/mycreate/jquery.waypoints.min.js"></script>
+<script src="js/mycreate/jquery.stellar.min.js"></script>
+<script src="js/mycreate/owl.carousel.min.js"></script>
+<script src="js/mycreate/aos.js"></script>
+<script src="js/mycreate/scrollax.min.js"></script>
+<script src="js/mycreate/main.js"></script>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script>
+    window.onload = () => {
+        if (new URL(location.href).searchParams.get('loginError')) {
+            alert(new URL(location.href).searchParams.get('loginError'));
+        }
+    };
+</script>
+<script>
+    if (document.getElementById('img')) {
+        document.getElementById('img').addEventListener('change', function (e) {
+            const formData = new FormData();
+            console.log(this, this.files);
+            formData.append('img', this.files[0]);
+            axios.post('/post/img', formData)
+                .then((res) => {
+                    document.getElementById('img-url').value = res.data.url;
+                    document.getElementById('img-preview').src = res.data.url;
+                    document.getElementById('img-preview').style.display = 'inline';
+                })
+                .catch((err) => {
+                    console.error(err);
+                });
+        });
+    }
+</script>
 {% endblock %}
