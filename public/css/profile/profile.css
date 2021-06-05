@@ -10,15 +10,25 @@
     width: 365px;
 }
 
-.image {
-    width: 360px;
-    height: 360px;
+.image-bg {
+    width: 250px;
+    height: 250px;
+    margin-left: 58px;
+    padding: 10px;
+    background-color: #fff;
 }
+
+.image {
+    width: 230px;
+    height: 230px;
+}
+
+
 
 .main-content-form {
     margin-top: 13px;
     width: 364px;
-    height: 153px;
+    height: 270px;
     background-color: #fff;
     padding: 20px;
 }

@@ -9,23 +9,17 @@
 {% endblock %}
 
 {% block content %}
-<!-- <h1>이메일 :{{user.email}}</h1>
-<h1>닉네임 :{{user.nick}}</h1> -->
-
 <div style="padding-top: 50px; padding-bottom: 20px;">
   <div class="post-form-back">
-
     <div class="post-form">
 
-        <div class="image-bg">
-          <img class="image" src="/img/common.jpg">
-        </div>
+      <div class="image-bg"><img class="image" src="/img/common.jpg"></div>
 
-        <div class="main-content-form">
-          <p>닉네임 : 큐티걸</p>
-          <p>나이 : 19살</p>
-          <p>이메일 : mycasio1@naver.com</p>
-        </div>
+      <div class="main-content-form">
+        <p>닉네임 : {{user.nick}}</p>
+        <p>나이 : 19살</p>
+        <p>이메일 : {{user.email}}</p>
+      </div>
     </div>
 
   </div>
