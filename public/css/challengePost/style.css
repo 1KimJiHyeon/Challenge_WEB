@@ -471,7 +471,8 @@ pre {
       max-width: 960px; } }
   @media (min-width: 1200px) {
     .container {
-      max-width: 1140px; } }
+      max-width: 1045px;
+      margin-left: 400px; } }
 
 .container-fluid {
   width: 100%;
@@ -486,7 +487,7 @@ pre {
   display: flex;
   -ms-flex-wrap: wrap;
   flex-wrap: wrap;
-  margin-left: 6%;}
+  margin-left: 8%;}
 
 .no-gutters {
   margin-right: 0;

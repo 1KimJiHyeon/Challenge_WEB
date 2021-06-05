@@ -1,95 +1,192 @@
-{% extends 'nav.html' %}
+{% if user and user.id %}
+<!DOCTYPE html>
+<html lang="ko">
 
-{% block title %}
-<title>챌린지</title>
-{% endblock %}
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
 
-{% block style %}
-<link rel="stylesheet" href="/main.css">
-<link rel="stylesheet" href="/css/challengePost/post.css">
-<link rel="stylesheet" href="/css/challengePost/style.css">
-{% endblock %}
+  <link rel="stylesheet" type="text/css" href="/css/challengePost/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="/css/challengePost/jquery.mCustomScrollbar.css">
+  <link rel="stylesheet" type="text/css" href="/css/challengePost/navstyle.css">
+  <link rel="stylesheet" type="text/css" href="/css/challengePost/icon/themify-icons/themify-icons.css">
+  <link rel="stylesheet" href="/css/challengePost/post-form.css">
+  <link rel="stylesheet" href="/css/challengePost/post.css">
+  <link rel="stylesheet" href="/css/challengePost/style.css">
+</head>
 
-{% block content %}
-
-<div class="timeline">
-    <form id="twit-form" action="/post" method="post" enctype="multipart/form-data">
-      <input type="text" name="id" value="{{board.id}}" hidden>
-      <div class="img-preview">
-        <img id="img-preview" src="" style="display: none;" width="250" alt="미리보기">
-        <input id="img-url" type="hidden" name="url">
-      </div>
-      <div>
-        내용 : <textarea name="contents"></textarea><br>
-        <label id="img-label" for="img">사진 업로드</label>
-        <input id="img" type="file" accept="image/*">
-        <input type="submit" value="확인">
-      </div>
-    </form>
-</div>
-
-<div class="container">
-  <div class="col-lg-9">
-    <div class="row">
-      {% if board.posts %}
-      {% set post= board.posts %}
-      {% for i in range(board.posts.length-1, -1, -1) %}
-      <div class="post">
-        <article>
-          <header>
-            <div class="profile-of-article">
-              <img class="img-profile" src="{{post[i].img}}">
-              <span class=" main-id">작성자 : {{post[i].author}}</span>
-            </div>
-          </header>
-
-          <div class="hl"></div>
-
-          <div class="main-image">
-            <img class="img-main" src="{{post[i].img}}">
+<body>
+  <div id="pcoded" class="pcoded">
+    <div class="pcoded-container navbar-wrapper">
+      <nav class="navbar header-navbar pcoded-header">
+        <div class="navbar-wrapper">
+          <div class="navbar-logo">
+            <a href="/" style="margin-left:550px; margin-top: 5px;">
+              <img src="/img/logo.png" width="380px" height="58px">
+            </a>
           </div>
 
-          <div class="hl"></div>
+          <div class="navbar-container container-fluid">
+            <ul class="nav-right">
+              <li class="user-profile header-notification">
+                <a href="#" class="waves-effect waves-light">
+                  <span>{{user.nick + '님'}}</span>
+                  <i class="ti-angle-down"></i>
+                </a>
 
-          <div class="main-content">
-            <div class="main-contentin">
-              내용 : {{post[i].contents}}
-            </div>
+                <ul class="show-notification profile-notification">
+                  <li class="waves-effect waves-light">
+                    <a href="/profile">
+                      <i class="ti-user"></i>
+                      나의 정보
+                    </a>
+                  </li>
+                  <li class="waves-effect waves-light">
+                    <a href="/mycreate">
+                      <i class="ti-email"></i>
+                      개설한 챌린저스
+                    </a>
+                  </li>
+                  <li class="waves-effect waves-light">
+                    <a href="/myattend">
+                      <i class="ti-email"></i>
+                      참여한 챌린저스
+                    </a>
+                  </li>
+                  <li class="waves-effect waves-light">
+                    <a href="/auth/logout">
+                      <i class="ti-layout-sidebar-left"></i>
+                      로그아웃
+                    </a>
+                  </li>
+                </ul>
+              </li>
+            </ul>
           </div>
-        </article>
+        </div>
+      </nav>
+    </div>
+
+    <!-- <div class="timeline">
+      
+        
+        <div class="img-preview">
+          <img id="img-preview" src="" style="display: none;" width="250" alt="미리보기">
+          <input id="img-url" type="hidden" name="url">
+        </div>
+        <div>
+          내용 : <textarea name="contents"></textarea><br>
+          <label id="img-label" for="img">사진 업로드</label>
+          <input id="img" type="file" accept="image/*">
+          <input type="submit" value="확인">
+        </div>
+      </form>
+  </div> -->
+
+    <nav class="pcoded-navbar">
+      <div class="pcoded-inner-navbar main-menu" style="background: #448aff;">
+        <div class="post-form">
+          <form id="twit-form" action="/post" method="post" enctype="multipart/form-data">
+            <input type="text" name="id" value="{{board.id}}" hidden>
+            <article class="post-form-article">
+              <header class="post-form-header">
+                <div class="profile-of-form-article">
+                  <img class="img-profile-form" src="/img/common.jpg">
+                  <span class=" main-id-form">{{board.author}}</span>
+                </div>
+              </header>
+
+              <div class="hl-form"></div>
+
+              <div class="main-image-form">
+                  <label id="img-label" class="img_add_btn" for="img"></label>
+                  <input id="img"  type="file" accept="image/*" style="display: none;">
+                  <img id="img-preview" class="img-main-form" src="" style="display: none;">
+                  <input id="img-url" type="hidden" name="url">
+              </div>
+
+              <div class="hl-form"></div>
+
+              <div class="main-content-form">
+                <textarea class="main-contentin-form" placeholder="내용을 입력하세요." name="contents"></textarea>
+              </div>
+            </article>
+            <input class="post_btn-form" type="submit" value="확인">
+          </form>
+        </div>
+        
       </div>
-      {% endfor %}
-      {% endif %}
+    </nav>
+    <div class="pcoded-main-container">
+      <div class="container">
+        <div class="col-lg-9">
+          <div class="row">
+            {% if board.posts %}
+            {% set post= board.posts %}
+            {% for i in range(board.posts.length-1, -1, -1) %}
+            <div class="post">
+              <article>
+                <header>
+                  <div class="profile-of-article">
+                    <img class="img-profile" src="{{post[i].img}}">
+                    <span class=" main-id">{{post[i].author}}</span>
+                  </div>
+                </header>
+
+                <div class="hl"></div>
+
+                <div class="main-image">
+                  <img class="img-main" src="{{post[i].img}}">
+                </div>
+
+                <div class="hl"></div>
+
+                <div class="main-content">
+                  <div class="main-contentin">
+                    {{post[i].contents}}
+                  </div>
+                </div>
+              </article>
+            </div>
+            {% endfor %}
+            {% endif %}
+          </div>
+        </div>
+      </div>
     </div>
   </div>
-</div>
-{% endblock %}
-
-{% block script %}
-<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-<script>
-  window.onload = () => {
-    if (new URL(location.href).searchParams.get('loginError')) {
-      alert(new URL(location.href).searchParams.get('loginError'));
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  <script>
+    window.onload = () => {
+      if (new URL(location.href).searchParams.get('loginError')) {
+        alert(new URL(location.href).searchParams.get('loginError'));
+      }
+    };
+  </script>
+  <script>
+    if (document.getElementById('img')) {
+      document.getElementById('img').addEventListener('change', function (e) {
+        const formData = new FormData();
+        console.log(this, this.files);
+        formData.append('img', this.files[0]);
+        axios.post('/post/img', formData)
+          .then((res) => {
+            document.getElementById('img-label').style.display = 'none';
+            document.getElementById('img-url').value = res.data.url;
+            document.getElementById('img-preview').src = res.data.url;
+            document.getElementById('img-preview').style.display = 'inline';
+          })
+          .catch((err) => {
+            console.error(err);
+          });
+      });
     }
-  };
-</script>
-<script>
-  if (document.getElementById('img')) {
-    document.getElementById('img').addEventListener('change', function (e) {
-      const formData = new FormData();
-      console.log(this, this.files);
-      formData.append('img', this.files[0]);
-      axios.post('/post/img', formData)
-        .then((res) => {
-          document.getElementById('img-url').value = res.data.url;
-          document.getElementById('img-preview').src = res.data.url;
-          document.getElementById('img-preview').style.display = 'inline';
-        })
-        .catch((err) => {
-          console.error(err);
-        });
-    });
-  }
-</script>
-{% endblock %}
+  </script>
+  <script type="text/javascript" src="/js/challengePost/jquery.min.js"></script>
+  <script type="text/javascript" src="/js/challengePost/script.js"></script>
+  <script src="/js/challengePost/pcoded.min.js"></script>
+  <script src="/js/challengePost/vertical-layout.min.js "></script>
+</body>
+
+</html>
+{% endif %}

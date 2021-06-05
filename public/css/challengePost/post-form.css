@@ -1,70 +1,81 @@
-.post {
-    width: 353px;
-    margin-right: 100px;
-    margin-top: 60px;
-    margin-bottom: 20px;
+.img_add_btn{
+    width: 295px;
+    height: 400px;
+    background-image:url("/img/add.png");
+    background-repeat:no-repeat;background-position:center; background-position-y:-1;background-position-x:-1;
 }
-
-article{
+.post-form {
+    width: 300px;
+    margin-top: 20px;
+}
+.post-form-article{
     background-color: #fff;
     border-radius: 3px;
     border: 1.5px solid #DBDBDB;
 }
 
-header {
+.post-form-header {
     height: 60px;
     padding-left: 10px;
-    padding-top: 15px;
+    padding-top: 1px;
     display: flex;
     align-items: center;
     justify-content: space-between;
 }
 
-.profile-of-article {
+.profile-of-form-article {
     display: flex;
     align-items: center;
 }
 
-.img-profile {
+.img-profile-form {
     width: 32px;
     height: 32px;
     border: 1px solid #fafafa;
     border-radius: 100%;
 }
 
-.main-id {
+.main-id-form {
     margin-left: 14px;
     font-weight: 500;
     font-size: 14px;
     color: #262626;
 }
-.hl {
+.hl-form {
     margin-top: 1px;
     margin-bottom: 1px;
     border-top: 1.5px solid #DBDBDB;
-    width: 353px;
+    width: 298px;
 }
 
-.main-image {
+.main-image-form {
     margin-left: 1px;
     margin-right: 1px;
     width: 300px;
     height: 400px;
 }
 
-.img-main {
-    width: 348px;
+.img-main-form {
+    width: 295px;
     height: 400px;
 }
 
-.main-content {
+.main-content-form {
     width: 300px;
     height: 100px;
-
     display: flex;
 }
-.main-contentin {
+.main-contentin-form {
     width: 280px;
     height: 80px;
     margin: auto;
+    border: none;
+}
+
+.post_btn-form {
+    margin-top: 10px;
+    width: 300px;
+    height: 50px;
+    background-color: #DBDBDB;
+    border: none;
 }
