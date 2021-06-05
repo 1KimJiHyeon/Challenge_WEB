@@ -5,13 +5,11 @@
 {% endblock %}
 
 {% block style %}
-<!-- <link rel="stylesheet" href="css/challengeForm/style.css">
-<link rel="stylesheet" href="/main.css"> -->
-<link rel="stylesheet" href="/css/challengePost/post-form.css">
+<link rel="stylesheet" href="/css/challengeForm/post-form.css">
 {% endblock %}
 
 {% block content %}
-<form action="/board/write" method="post" enctype="multipart/form-data">
+<!-- <form action="/board/write" method="post" enctype="multipart/form-data">
   <div class="img-preview">
     <img id="img-preview" src="" style="display: none;" width="250" alt="미리보기">
     <input id="img-url" type="hidden" name="url">
@@ -21,36 +19,28 @@
   <label id="img-label" for="img">사진 업로드</label>
   <input id="img" type="file" accept="image/*">
   <input type="submit" value="확인">
-</form>
-
-<div class="post-form">
-  <form id="twit-form" action="/post" method="post" enctype="multipart/form-data">
-    <input type="text" name="id" value="{{board.id}}" hidden>
-    <article class="post-form-article">
-      <header class="post-form-header">
-        <div class="profile-of-form-article">
-          <img class="img-profile-form" src="/img/common.jpg">
-          <span class=" main-id-form">{{board.author}}</span>
+</form> -->
+<div style="padding-top: 50px; padding-bottom: 20px;">
+  <div class="post-form-back">
+    <div class="post-form">
+      <form action="/board/write" method="post" enctype="multipart/form-data">
+        <input type="text" name="id" value="{{board.id}}" hidden>
+        <div class="main-image-form">
+          <label id="img-label" class="img_add_btn" for="img"></label>
+          <input id="img" type="file" accept="image/*" style="display: none;">
+          <img id="img-preview" class="img-main-form" src="" style="display: none;">
+          <input id="img-url" type="hidden" name="url">
         </div>
-      </header>
 
-      <div class="hl-form"></div>
+        <div class="main-content-form">
+          <input class="main-input-form" type="text" placeholder="챌린지명을 입력하세요." name="title">
+          <textarea class="main-contentin-form" placeholder="설명을 입력하세요." name="contents"></textarea>
+          <input class="post_btn-form" type="submit" value="확인">
+        </div>
 
-      <div class="main-image-form">
-        <label id="img-label" class="img_add_btn" for="img"></label>
-        <input id="img" type="file" accept="image/*" style="display: none;">
-        <img id="img-preview" class="img-main-form" src="" style="display: none;">
-        <input id="img-url" type="hidden" name="url">
-      </div>
-
-      <div class="hl-form"></div>
-
-      <div class="main-content-form">
-        <textarea class="main-contentin-form" placeholder="내용을 입력하세요." name="contents"></textarea>
-      </div>
-    </article>
-    <input class="post_btn-form" type="submit" value="확인">
-  </form>
+      </form>
+    </div>
+  </div>
 </div>
 {% endblock %}
 
@@ -71,6 +61,7 @@
       formData.append('img', this.files[0]);
       axios.post('/post/img', formData)
         .then((res) => {
+          document.getElementById('img-label').style.display = 'none';
           document.getElementById('img-url').value = res.data.url;
           document.getElementById('img-preview').src = res.data.url;
           document.getElementById('img-preview').style.display = 'inline';

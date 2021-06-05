@@ -1,0 +1,58 @@
+.post-form-back {
+    width: 395px;
+    height: 563px;
+    background-color: #448aff;
+    margin-left: 39%;
+    padding:15px;
+}
+
+.post-form {
+    width: 365px;
+}
+
+.img_add_btn{
+    width: 363px;
+    height: 365px;
+    background-image:url("/img/add.png");
+    background-repeat:no-repeat;background-position:center; background-position-y:-1;background-position-x:-1;
+}
+
+.main-image-form {
+    width: 365px;
+    height: 365px;
+}
+
+.img-main-form {
+    width: 363px;
+    height: 365px;
+}
+
+.main-content-form {
+    margin-top: 13px;
+    width: 364px;
+    height: 153px;
+    background-color: #fff;
+}
+
+.main-input-form {
+    margin-top: 10px;
+    width: 350px;
+    height: 30px;
+    margin-left: 6px;
+}
+
+.main-contentin-form {
+    margin-top: 10px;
+    width: 350px;
+    height: 59px;
+    margin-left: 6px;
+}
+
+.post_btn-form {
+    margin-top: 3px;
+    width: 350px;
+    height: 30px;
+    background-color: #DBDBDB;
+    border: none;
+    margin-left: 6px;
+}
