@@ -5,42 +5,29 @@
 {% endblock %}
 
 {% block style %}
-<!-- <link rel="stylesheet" href="css/myPage/style.css"> -->
-<link rel="stylesheet" href="/css/challengePost/post-form.css">
+<link rel="stylesheet" href="/css/profile/profile.css">
 {% endblock %}
 
 {% block content %}
-<h1>이메일 :{{user.email}}</h1>
-<h1>닉네임 :{{user.nick}}</h1>
+<!-- <h1>이메일 :{{user.email}}</h1>
+<h1>닉네임 :{{user.nick}}</h1> -->
 
-<div class="post-form">
-    <form id="twit-form" action="/post" method="post" enctype="multipart/form-data">
-      <input type="text" name="id" value="{{board.id}}" hidden>
-      <article class="post-form-article">
-        <header class="post-form-header">
-          <div class="profile-of-form-article">
-            <img class="img-profile-form" src="/img/common.jpg">
-            <span class=" main-id-form">{{board.author}}</span>
-          </div>
-        </header>
+<div style="padding-top: 50px; padding-bottom: 20px;">
+  <div class="post-form-back">
 
-        <div class="hl-form"></div>
+    <div class="post-form">
 
-        <div class="main-image-form">
-          <label id="img-label" class="img_add_btn" for="img"></label>
-          <input id="img" type="file" accept="image/*" style="display: none;">
-          <img id="img-preview" class="img-main-form" src="" style="display: none;">
-          <input id="img-url" type="hidden" name="url">
+        <div class="image-bg">
+          <img class="image" src="/img/common.jpg">
         </div>
-
-        <div class="hl-form"></div>
 
         <div class="main-content-form">
-          <textarea class="main-contentin-form" placeholder="내용을 입력하세요." name="contents"></textarea>
+          <p>닉네임 : 큐티걸</p>
+          <p>나이 : 19살</p>
+          <p>이메일 : mycasio1@naver.com</p>
         </div>
-      </article>
-      <input class="post_btn-form" type="submit" value="확인">
-    </form>
-  </div>
+    </div>
 
+  </div>
+</div>
 {% endblock %}

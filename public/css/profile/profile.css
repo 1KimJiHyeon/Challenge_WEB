@@ -1,0 +1,28 @@
+.post-form-back {
+    width: 395px;
+    height: 563px;
+    background-color: #69a1ff;
+    margin-left: 39%;
+    padding:15px;
+}
+
+.post-form {
+    width: 365px;
+}
+
+.image {
+    width: 360px;
+    height: 360px;
+}
+
+.main-content-form {
+    margin-top: 13px;
+    width: 364px;
+    height: 153px;
+    background-color: #fff;
+    padding: 20px;
+}
+
+p{
+    font-size: large;
+}
