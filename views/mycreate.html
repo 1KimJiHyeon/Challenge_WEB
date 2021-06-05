@@ -7,6 +7,7 @@
 {% block style %}
 <link rel="stylesheet" href="/css/mycreate/animate.css">
 <link rel="stylesheet" href="/css/mycreate/style.css">
+<link rel="stylesheet" href="/css/mycreate/mycreate.css">
 {% endblock %}
 
 {% block content %}
@@ -22,10 +23,11 @@
                         style="background-image: url({{boards[i].img}});"></a>
                     {% endif %}
                     <a href="/challengeBoard/{{boards[i].id}}">
-                        <div class="text p-3">
-                            <h3>제목 :{{boards[i].title}}</h3>
-                            <h3>내용 :{{boards[i].contents}}</h3>
-                            <span class="listing">{{boards[i].author}}</span>
+                        <div class="text p-3" style="padding:10px;">
+                            <div style="text-align: center;"><span class="title-form">{{boards[i].title}}</span></div>
+                            <span class="contents-form">{{boards[i].contents}}</span>
+                            <div style="text-align: right;"><span class="author-form">개설자 - {{boards[i].author}}</span>
+                            </div>
                         </div>
                     </a>
                 </div>
