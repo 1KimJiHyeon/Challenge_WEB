@@ -27,9 +27,13 @@
                                 <i class="ti-menu"></i>
                             </a>
                         </div>
-                        <a href="/" style="margin-left:550px; margin-top: 5px;">
-                            <img src="/img/logo.png" width="380px" height="58px">
+
+                        <a href="/" style="margin-left:550px; margin-top: 5px;"></a>
+                        {% block logo %}
+                        <img src="/img/logo.png" width="380px" height="58px">
+                        {% endblock %}
                         </a>
+
                     </div>
 
                     <div class="navbar-container container-fluid">
@@ -50,13 +54,13 @@
                                     <li class="waves-effect waves-light">
                                         <a href="/mycreate">
                                             <i class="ti-email"></i>
-                                            개설한 챌린저스
+                                            개설한 챌린지
                                         </a>
                                     </li>
                                     <li class="waves-effect waves-light">
                                         <a href="/myattend">
                                             <i class="ti-email"></i>
-                                            참여한 챌린저스
+                                            참여한 챌린지
                                         </a>
                                     </li>
                                     <li class="waves-effect waves-light">
@@ -93,7 +97,7 @@
                                 <i class="ti-home"></i>
                                 <b>D</b>
                             </span>
-                            <span class="pcoded-mtext" data-i18n="nav.dash.main">챌린저스 목록</span>
+                            <span class="pcoded-mtext" data-i18n="nav.dash.main">챌린지 목록</span>
                         </a>
                     </li>
                     　
@@ -103,7 +107,7 @@
                                 <i class="ti-home"></i>
                                 <b>D</b>
                             </span>
-                            <span class="pcoded-mtext" data-i18n="nav.dash.main">챌린저스 개설</span>
+                            <span class="pcoded-mtext" data-i18n="nav.dash.main">챌린지 개설</span>
                         </a>
                     </li>
                     　

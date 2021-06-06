@@ -9,6 +9,10 @@
 <link rel="stylesheet" href="/css/myattend/style.css">
 {% endblock %}
 
+{% block logo %}
+<img src="/img/myattend.png" width="380px" height="58px">
+{% endblock %}
+
 {% block content %}
 <div class="container">
     <div class="col-lg-9">
@@ -19,7 +23,7 @@
                     <header>
                         <div class="profile-of-article">
                             <img class="img-profile" src="{{posts[i].img}}">
-                            <span class=" main-id">작성자 : {{posts[i].author}}</span>
+                            <span class=" main-id">{{posts[i].author}}</span>
                         </div>
                     </header>
 
@@ -33,7 +37,7 @@
 
                     <div class="main-content">
                         <div class="main-contentin">
-                            내용 : {{posts[i].contents}}
+                           {{posts[i].contents}}
                         </div>
                     </div>
                 </article>
