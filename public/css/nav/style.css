@@ -7049,7 +7049,8 @@ table tbody .border-bottom-info td {
   opacity: 1;
   visibility: visible;
   position: absolute;
-  top: 9px; }
+  top: 20px;
+  margin-left: -2px; }
 .pcoded[theme-layout="vertical"] .pcoded-navbar .pcoded-item li.pcoded-hasmenu > a:after {
   opacity: 1;
   visibility: visible; }
