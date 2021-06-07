@@ -53,7 +53,7 @@
       const formData = new FormData();
       console.log(this, this.files);
       formData.append('img', this.files[0]);
-      axios.post('/post/img', formData)
+      axios.post('/board/img', formData)
         .then((res) => {
           document.getElementById('img-label').style.display = 'none';
           document.getElementById('img-url').value = res.data.url;

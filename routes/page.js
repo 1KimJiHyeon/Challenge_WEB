@@ -12,7 +12,7 @@ router.use((req, res, next) => {
 });
 
 router.get('/profile', isLoggedIn, (req, res) => {
-  res.render('profile', { test: res.locals.user.url });
+  res.render('profile');
 });
 
 router.get('/mycreate', isLoggedIn, (req, res) => {
@@ -43,7 +43,7 @@ router.get('/challengeForm', (req, res) => {
 
 router.get('/challengeBoard/:id', function (req, res) {
   Board.findOne({ _id: req.params.id }, function (err, board) {
-    res.render('challengePost', { board: board, nick: res.locals.user.nick });
+    res.render('challengePost', { board: board, nick: res.locals.user.nick, img: res.locals.user.img });
   })
 });
 

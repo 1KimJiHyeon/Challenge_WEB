@@ -37,7 +37,7 @@ router.post('/img', isNotLoggedIn, upload.single('img'), (req, res) => {
 const upload2 = multer();
 router.post('/join', isNotLoggedIn, upload2.none(), async (req, res, next) => {
   const { email, nick, password } = req.body;
-  var img = req.body.url;
+  const img = req.body.url;
   try {
     const exUser = await User.findOne({ where: { email } });
     if (exUser) {

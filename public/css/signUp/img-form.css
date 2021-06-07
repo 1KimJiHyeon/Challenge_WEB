@@ -1,0 +1,16 @@
+.main-image-form {
+    margin-left: 130px;
+    width: 150px;
+    height: 150px;
+    margin-bottom: 30px;
+}
+.img_add_btn{
+    width: 150px;
+    height: 150px;
+    background-image:url("/img/add.png");
+    background-repeat:no-repeat;background-position:center; background-position-y:-1;background-position-x:-1;
+}
+.img-main-form {
+    width: 150px;
+    height: 150px;
+}

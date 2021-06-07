@@ -6,6 +6,7 @@ var postSchema = new Schema({
     contents: String,
     img:String,
     author: String,
+    authorImg: String,
     post_date: {type: Date, default: Date.now()}
 });
 
