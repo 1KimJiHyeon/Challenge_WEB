@@ -12,7 +12,7 @@ router.use((req, res, next) => {
 });
 
 router.get('/profile', isLoggedIn, (req, res) => {
-  res.render('profile');
+  res.render('profile', { test: res.locals.user.url });
 });
 
 router.get('/mycreate', isLoggedIn, (req, res) => {

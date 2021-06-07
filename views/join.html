@@ -83,6 +83,12 @@
                                     <span class="form-bar"></span>
                                     <label class="float-label">닉네임</label>
                                 </div>
+                                <div class="main-image-form">
+                                    <label id="img-label" class="img_add_btn" for="img">zz</label>
+                                    <input id="img" type="file" accept="image/*" style="display: none;">
+                                    <img id="img-preview" class="img-main-form" src="" style="display: none;">
+                                    <input id="img-url" type="hidden" name="url">
+                                </div>
                                 <div class="form-group form-primary">
                                     <input type="text" name="email" class="form-control" required="">
                                     <span class="form-bar"></span>
@@ -112,7 +118,6 @@
     <script type="text/javascript" src="js/signUp/jquery.min.js"></script>
     <script src="js/signUp/waves.min.js"></script>
     <script type="text/javascript" src="js/signUp/common-pages.js"></script>
-    {% block script %}
     <script>
         window.onload = () => {
             if (new URL(location.href).searchParams.get('error')) {
@@ -120,7 +125,26 @@
             }
         };
     </script>
-    {% endblock %}
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script>
+        if (document.getElementById('img')) {
+            document.getElementById('img').addEventListener('change', function (e) {
+                const formData = new FormData();
+                console.log(this, this.files);
+                formData.append('img', this.files[0]);
+                axios.post('/auth/img', formData)
+                    .then((res) => {
+                        document.getElementById('img-url').value = res.data.url;
+                        document.getElementById('img-preview').src = res.data.url;
+                        document.getElementById('img-preview').style.display = 'inline';
+                    })
+                    .catch((err) => {
+                        console.error(err);
+                    });
+            });
+        }
+    </script>
+
 </body>
 
 </html>

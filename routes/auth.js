@@ -1,13 +1,43 @@
 const express = require('express');
 const passport = require('passport');
 const bcrypt = require('bcrypt');
+const multer = require('multer');
+const path = require('path');
+const fs = require('fs');
 const { isLoggedIn, isNotLoggedIn } = require('./middlewares');
 const User = require('../models/user');
 
 const router = express.Router();
 
-router.post('/join', isNotLoggedIn, async (req, res, next) => {
+try {
+  fs.readdirSync('uploads');
+} catch (error) {
+  console.error('uploads 폴더가 없어 uploads 폴더를 생성합니다.');
+  fs.mkdirSync('uploads');
+}
+
+const upload = multer({
+  storage: multer.diskStorage({
+    destination(req, file, cb) {
+      cb(null, 'uploads/');
+    },
+    filename(req, file, cb) {
+      const ext = path.extname(file.originalname);
+      cb(null, path.basename(file.originalname, ext) + Date.now() + ext);
+    },
+  }),
+  limits: { fileSize: 5 * 1024 * 1024 },
+});
+
+router.post('/img', isNotLoggedIn, upload.single('img'), (req, res) => {
+  console.log(req.file);
+  res.json({ url: `/img/${req.file.filename}` });
+});
+
+const upload2 = multer();
+router.post('/join', isNotLoggedIn, upload2.none(), async (req, res, next) => {
   const { email, nick, password } = req.body;
+  var img = req.body.url;
   try {
     const exUser = await User.findOne({ where: { email } });
     if (exUser) {
@@ -18,6 +48,7 @@ router.post('/join', isNotLoggedIn, async (req, res, next) => {
       email,
       nick,
       password: hash,
+      img,
     });
     return res.redirect('/');
   } catch (error) {
