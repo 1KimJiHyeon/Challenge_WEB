@@ -25,6 +25,10 @@
                     <a href="/challengeBoard/{{boards[i].id}}"
                         class="img d-flex justify-content-center align-items-center"
                         style="background-image: url({{boards[i].img}});"></a>
+                    {% else %}
+                    <a href="/challengeBoard/{{boards[i].id}}"
+                    class="img d-flex justify-content-center align-items-center"
+                    style="background-image: url('/img/no-pic.png');"></a>
                     {% endif %}
                     <a href="/challengeBoard/{{boards[i].id}}">
                         <div class="text p-3" style="padding:10px;">

@@ -17,9 +17,11 @@
 <div style="padding-top: 50px; padding-bottom: 20px;">
   <div class="post-form-back">
     <div class="post-form">
-
+      {% if user.img %}
       <div class="image-bg"><img class="image" src="{{user.img}}"></div>
-    
+      {% else %}
+      <div class="image-bg"><img class="image" src="/img/no-user.png"></div>
+      {% endif %}
       <div class="main-content-form">
         <p>닉네임 : {{user.nick}}</p>
         <p>이메일 : {{user.email}}</p>

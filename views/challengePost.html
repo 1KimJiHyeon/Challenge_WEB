@@ -21,9 +21,9 @@
       <nav class="navbar header-navbar pcoded-header">
         <div class="navbar-wrapper">
           <div class="navbar-logo">
-              <a href="/challengeBoard">
-                <img src="/img/arrow.png" width="25px" height="25px">
-              </a>
+            <a href="/challengeBoard">
+              <img src="/img/arrow.png" width="25px" height="25px">
+            </a>
             <a href="/" style="margin-left:550px; margin-top: 5px;">
               <img src="/img/logo.png" width="380px" height="58px">
             </a>
@@ -78,7 +78,11 @@
             <article class="post-form-article">
               <header class="post-form-header">
                 <div class="profile-of-form-article">
-                  <img class="img-profile-form" src="{{img}}">
+                  {% if img %}
+                  <img class="img-profile" src="{{img}}"/>
+                  {% else %}
+                  <img class="img-profile" src="/img/no-user.png"/>
+                  {% endif %}
                   <span class=" main-id-form">{{nick}}</span>
                 </div>
               </header>
@@ -115,16 +119,26 @@
               <article>
                 <header>
                   <div class="profile-of-article">
-                    <img class="img-profile" src="{{post[i].authorImg}}">
+                    {% if post[i].authorImg %}
+                    <img class="img-profile" src="{{post[i].authorImg}}"/>
+                    {% else %}
+                    <img class="img-profile" src="/img/no-user.png"/>
+                    {% endif %}
                     <span class=" main-id">{{post[i].author}}</span>
                   </div>
                 </header>
 
                 <div class="hl"></div>
 
+                {% if post[i].img %}
                 <div class="main-image">
                   <img class="img-main" src="{{post[i].img}}">
                 </div>
+                {% else %}
+                <div class="main-image">
+                  <img class="img-main" src="/img/no-pic.png">
+                </div>
+                {% endif %}
 
                 <div class="hl"></div>
 

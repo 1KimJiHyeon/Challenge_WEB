@@ -22,17 +22,25 @@
                 <article>
                     <header>
                         <div class="profile-of-article">
-                            <img class="img-profile" src="{{posts[i].authorImg}}">
+                            {% if posts[i].authorImg %}
+                            <img class="img-profile" src="{{posts[i].authorImg}}"/>
+                            {% else %}
+                            <img class="img-profile" src="/img/no-user.png"/>
+                            {% endif %}
                             <span class=" main-id">{{posts[i].author}}</span>
                         </div>
                     </header>
 
                     <div class="hl"></div>
-
+                    {% if posts[i].img %}
                     <div class="main-image">
-                        <img class="img-main" src="{{posts[i].img}}">
+                      <img class="img-main" src="{{posts[i].img}}">
                     </div>
-
+                    {% else %}
+                    <div class="main-image">
+                      <img class="img-main" src="/img/no-pic.png">
+                    </div>
+                    {% endif %}
                     <div class="hl"></div>
 
                     <div class="main-content">
