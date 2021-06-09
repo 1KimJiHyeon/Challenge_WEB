@@ -90,63 +90,36 @@
 <div class="swiper-button-prev" style="padding-left:250px; top:335px"></div>
 <div class="swiper-container mySwiper" style="width: 900px; padding-bottom:50px">
     <div class="swiper-wrapper">
+        {% if (boards.length == 0) %}
+        <div class="swiper-slide">
+            <div class="destination" style="height: 380px; padding-top: 190px;">
+                <span class="contents-form">등록된 챌린지가 없습니다.</span>
+            </div>
+        </div>
+        {% else %}
+        {% for i in range( 0, boards.length, 2) %}
         <div class="swiper-slide">
             <div class="destination" style="height: 380px;">
-                <a href="/challengeBoard/{{boards[1].id}}" class="img d-flex justify-content-center align-items-center"
-                    style="background-image: url(/img/common.jpg);"></a>
-                <a href="/challengeBoard/{{boards[1].id}}">
+                {% if boards[i].img %}
+                <a href="/challengeBoard/{{boards[i].id}}" class="img d-flex justify-content-center align-items-center"
+                    style="background-image: url({{boards[i].img}});"></a>
+                {% else %}
+                <a href="/challengeBoard/{{boards[i].id}}" class="img d-flex justify-content-center align-items-center"
+                    style="background-image: url('/img/no-pic.png');"></a>
+                {% endif %}
+                <a href="/challengeBoard/{{boards[i].id}}">
                     <div class="text p-3" style="padding:10px;">
-                        <div style="text-align: center;"><span class="title-form">물 마시기</span></div>
-                        <span class="contents-form">하루에 10잔 마셔라</span>
-                        <div style="text-align: right;"><span class="author-form">개설자 - 박재범</span>
+                        <div style="text-align: center;"><span class="title-form">{{boards[i].title}}</span></div>
+                        <span class="contents-form">{{boards[i].contents}}</span>
+                        <div style="text-align: right;"><span class="author-form">개설자 - {{boards[i].author}}</span>
                         </div>
                     </div>
                 </a>
             </div>
         </div>
+        {% endfor %}
+        {% endif %}
 
-        <div class="swiper-slide">
-            <div class="destination" style="height: 300px;">
-                <a href="/challengeBoard/{{boards[i].id}}" class="img d-flex justify-content-center align-items-center"
-                    style="background-image: url(/img/common.jpg);"></a>
-                <a href="/challengeBoard/{{boards[i].id}}">
-                    <div class="text p-3" style="padding:10px;">
-                        <div style="text-align: center;"><span class="title-form">물 마시기</span></div>
-                        <span class="contents-form">하루에 10잔 마셔라</span>
-                        <div style="text-align: right;"><span class="author-form">개설자 - 박재범</span>
-                        </div>
-                    </div>
-                </a>
-            </div>
-        </div>
-        <div class="swiper-slide">
-            <div class="destination" style="height: 300px;">
-                <a href="/challengeBoard/{{boards[i].id}}" class="img d-flex justify-content-center align-items-center"
-                    style="background-image: url(/img/common.jpg);"></a>
-                <a href="/challengeBoard/{{boards[i].id}}">
-                    <div class="text p-3" style="padding:10px;">
-                        <div style="text-align: center;"><span class="title-form">물 마시기</span></div>
-                        <span class="contents-form">하루에 10잔 마셔라</span>
-                        <div style="text-align: right;"><span class="author-form">개설자 - 박재범</span>
-                        </div>
-                    </div>
-                </a>
-            </div>
-        </div>
-        <div class="swiper-slide">
-            <div class="destination" style="height: 300px;">
-                <a href="/challengeBoard/{{boards[i].id}}" class="img d-flex justify-content-center align-items-center"
-                    style="background-image: url(/img/common.jpg);"></a>
-                <a href="/challengeBoard/{{boards[i].id}}">
-                    <div class="text p-3" style="padding:10px;">
-                        <div style="text-align: center;"><span class="title-form">물 마시기</span></div>
-                        <span class="contents-form">하루에 10잔 마셔라</span>
-                        <div style="text-align: right;"><span class="author-form">개설자 - 박재범</span>
-                        </div>
-                    </div>
-                </a>
-            </div>
-        </div>
     </div>
     <div class="swiper-pagination"></div>
 </div>

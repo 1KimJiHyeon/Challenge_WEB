@@ -47,8 +47,10 @@ router.get('/challengeBoard/:id', function (req, res) {
   })
 });
 
-router.get('/', async (req, res, next) => {
-  res.render('main');
+router.get('/', function (req, res, next) {
+  Board.find({}, function (err, boards) {
+    res.render('main', { boards: boards });
+  });
 });
 
 module.exports = router;
