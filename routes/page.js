@@ -41,6 +41,7 @@ router.get('/challengeForm', (req, res) => {
   res.render('challengeForm');
 });
 
+
 router.get('/challengeBoard/:id', function (req, res) {
   Board.findOne({ _id: req.params.id }, function (err, board) {
     res.render('challengePost', { board: board, nick: res.locals.user.nick, img: res.locals.user.img });

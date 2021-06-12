@@ -56,4 +56,24 @@ router.post('/write', isLoggedIn, upload2.none(), async (req, res, next) => {
   });
 });
 
+router.patch('/:id', async (req, res, next) => {
+  try {
+    const result = await Board.update({
+      _id: req.params.id,
+    }, {
+      title: req.body.title,
+    });
+    res.json(result);
+  } catch (err) {
+    console.error(err);
+    next(err);
+  }
+})
+
+router.delete('/:id', (req, res) => {
+  Board.remove({ _id: req.params.id }, function (err) {
+    if (err) return res.json(err);
+  });
+});
+
 module.exports = router;
