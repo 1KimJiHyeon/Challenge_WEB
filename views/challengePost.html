@@ -74,14 +74,14 @@
       <div class="pcoded-inner-navbar main-menu" style="background: #448aff;">
         <div class="post-form">
           <form id="twit-form" action="/post" method="post" enctype="multipart/form-data">
-            <input type="text" name="id" value="{{board.id}}" hidden>
+            <input type="text" name="id" id="board_id" value="{{board.id}}" hidden>
             <article class="post-form-article">
               <header class="post-form-header">
                 <div class="profile-of-form-article">
                   {% if img %}
-                  <img class="img-profile" src="{{img}}"/>
+                  <img class="img-profile" src="{{img}}" />
                   {% else %}
-                  <img class="img-profile" src="/img/no-user.png"/>
+                  <img class="img-profile" src="/img/no-user.png" />
                   {% endif %}
                   <span class=" main-id-form">{{nick}}</span>
                 </div>
@@ -120,9 +120,9 @@
                 <header>
                   <div class="profile-of-article">
                     {% if post[i].authorImg %}
-                    <img class="img-profile" src="{{post[i].authorImg}}"/>
+                    <img class="img-profile" src="{{post[i].authorImg}}" />
                     {% else %}
-                    <img class="img-profile" src="/img/no-user.png"/>
+                    <img class="img-profile" src="/img/no-user.png" />
                     {% endif %}
                     <span class=" main-id">{{post[i].author}}</span>
                   </div>
@@ -139,9 +139,7 @@
                   <img class="img-main" src="/img/no-pic.png">
                 </div>
                 {% endif %}
-
                 <div class="hl"></div>
-
                 <div class="main-content">
                   <div class="main-contentin">
                     {{post[i].contents}}

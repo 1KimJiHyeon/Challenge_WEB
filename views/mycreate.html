@@ -31,13 +31,21 @@
                     style="background-image: url('/img/no-pic.png');"></a>
                     {% endif %}
                     <a href="/challengeBoard/{{boards[i].id}}">
-                        <div class="text p-3" style="padding:10px;">
+                        <div class="text p-3" style="padding:10px; height: 140px;">
                             <div style="text-align: center;"><span class="title-form">{{boards[i].title}}</span></div>
                             <span class="contents-form">{{boards[i].contents}}</span>
                             <div style="text-align: right;"><span class="author-form">개설자 - {{boards[i].author}}</span>
                             </div>
                         </div>
                     </a>
+                    <div style="text-align: left; margin-top: -40px; margin-left: 10px;">
+                        <a href="/mycreate">
+                            <button id='edit' value={{boards[i].id}}
+                                style="width: 40px; height: 27px; border: none; margin-right: 10px;">수정</button></a>
+                        <a href="/mycreate">
+                            <button id='delete' value={{boards[i].id}}
+                                style="width: 40px; height: 27px; border: none;">삭제</button></a>
+                    </div>
                 </div>
             </div>
             {% endfor %}
@@ -56,6 +64,32 @@
 <script src="js/mycreate/scrollax.min.js"></script>
 <script src="js/mycreate/main.js"></script>
 <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script>
+    const edit_btn = document.getElementById('edit');
+    edit_btn.addEventListener('click', async (e) => { // 수정 클릭 시
+        const newTitle = prompt('바꿀 제목을 입력하세요');
+        const newContents = prompt('바꿀 내용을 입력하세요');
+        if (!newTitle) {
+            return alert('제목을 반드시 입력하셔야 합니다');
+        }
+        if (!newContents) {
+            return alert('내용을 반드시 입력하셔야 합니다');
+        }
+        try {
+            const edit_value = e.target.value
+            await axios.put(`/board/${edit_value}`, { title: newTitle, contents: newContents });
+        } catch (err) {
+            console.error(err);
+        }
+    });
+</script>
+<script>
+    const delete_btn = document.getElementById('delete');
+    delete_btn.addEventListener('click', async (e) => { // 삭제 클릭 시
+        const delete_value = e.target.value
+        await axios.delete(`/board/${delete_value}`);
+    });
+</script>
 <script>
     window.onload = () => {
         if (new URL(location.href).searchParams.get('loginError')) {

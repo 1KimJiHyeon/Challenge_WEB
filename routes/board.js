@@ -56,12 +56,13 @@ router.post('/write', isLoggedIn, upload2.none(), async (req, res, next) => {
   });
 });
 
-router.patch('/:id', async (req, res, next) => {
+router.put('/:id', isLoggedIn, async (req, res, next) => {
   try {
     const result = await Board.update({
       _id: req.params.id,
     }, {
       title: req.body.title,
+      contents: req.body.contents,
     });
     res.json(result);
   } catch (err) {
@@ -70,7 +71,7 @@ router.patch('/:id', async (req, res, next) => {
   }
 })
 
-router.delete('/:id', (req, res) => {
+router.delete('/:id', isLoggedIn, (req, res) => {
   Board.remove({ _id: req.params.id }, function (err) {
     if (err) return res.json(err);
   });
