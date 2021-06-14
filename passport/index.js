@@ -1,5 +1,3 @@
-// req.session에 저장된 사용자 아이디를 바탕으로 DB 조회로 사용자 정보를 얻어낸 후 req.user에 저장
-
 const passport = require('passport');
 const local = require('./localStrategy');
 const kakao = require('./kakaoStrategy');

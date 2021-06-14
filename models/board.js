@@ -1,4 +1,3 @@
-// board와 관련된 스키마 정의 (board와 post 관계 설정)
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 

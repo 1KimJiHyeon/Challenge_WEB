@@ -1,7 +1,4 @@
-// user 테이블에 대응되는 시퀄라이즈 모델 생성
-
 const Sequelize = require('sequelize');
-
 module.exports = class User extends Sequelize.Model {
   static init(sequelize) {
     return super.init({

@@ -1,4 +1,3 @@
-// post와 관련된 스키마 정의
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
