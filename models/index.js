@@ -1,3 +1,6 @@
+// require(../config/config) 설정 로딩
+// new Sequelize(옵션들..)로 DB 연결
+
 'use strict';
 
 const Sequelize = require('sequelize');

@@ -1,3 +1,5 @@
+// 카카오를 통한 로그인 관련 파일
+
 const passport = require('passport');
 const KakaoStrategy = require('passport-kakao').Strategy;
 
